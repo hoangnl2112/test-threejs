@@ -20,10 +20,24 @@ export default {
     function init() {
       camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20000);
       camera.position.set( 0, 5000, 5000);
-      new THREE.CameraHelper(camera);
 
       scene = new THREE.Scene();
       scene.background = new THREE.Color( 0xFFFFFF );
+
+      const hlight = new THREE.AmbientLight (0xFFFFFF);
+      scene.add(hlight);
+
+      const light = new THREE.PointLight(0xeeeeee,0.4);
+      light.position.set(0,2000,0);
+      scene.add(light);
+
+      const light2 = new THREE.PointLight(0xeeeeee,0.4);
+      light.position.set(0,-2000,0);
+      scene.add(light2);
+
+      const light3 = new THREE.PointLight(0xeeeeee,0.4);
+      light.position.set(0,4000,4000);
+      scene.add(light3);
 
       renderer = new THREE.WebGLRenderer({antialias:true, canvas});
       renderer.setSize(window.innerWidth,window.innerHeight);
