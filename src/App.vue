@@ -19,7 +19,8 @@ export default {
     let scene, camera, renderer;
     function init() {
       camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20000);
-      camera.position.set( 0, 5000, 5000);
+      camera.position.set( 0, 5000, 5500);
+      // camera.rotateOnAxis('z', 45)
 
       scene = new THREE.Scene();
       scene.background = new THREE.Color( 0xFFFFFF );
@@ -44,6 +45,7 @@ export default {
 
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableZoom = false
+      controls.rotateSpeed = 0.4
 
       let loader = new FBXLoader();
       loader.load('legion_base.fbx', function(object){
