@@ -18,8 +18,8 @@ export default {
 
     let scene, camera, renderer;
     function init() {
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000);
-      camera.position.set( 0, 4750, 5000);
+      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20000);
+      camera.position.set( 0, 5000, 5000);
       new THREE.CameraHelper(camera);
 
       scene = new THREE.Scene();
@@ -28,7 +28,8 @@ export default {
       renderer = new THREE.WebGLRenderer({antialias:true, canvas});
       renderer.setSize(window.innerWidth,window.innerHeight);
 
-      new OrbitControls(camera, renderer.domElement);
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableZoom = false
 
       let loader = new FBXLoader();
       loader.load('legion_base.fbx', function(object){
